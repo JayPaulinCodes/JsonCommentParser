@@ -4,6 +4,5 @@ logs/
 node_modules/
 src/
 .DS_Store
-package-lock.json
 tsconfig.json
 *.tgz

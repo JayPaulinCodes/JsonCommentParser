@@ -16,7 +16,7 @@ export class JsonComment {
         }
     }
 
-    public static parse(jsonBody: string, options: ParseOptions): DeepIndexable {
+    public static parse(jsonBody: string, options: ParseOptions = { eol: "LF" }): DeepIndexable {
         const eolConfig = options.eol ?? "LF";
         const eolChar = eolConfig === "CRLF" ? "\r\n" : "\n";
 
@@ -50,7 +50,7 @@ export class JsonComment {
         return fileBody;
     }
 
-    public static parsefromFile(filePath: string, options: ParseOptions): DeepIndexable {
+    public static parsefromFile(filePath: string, options: ParseOptions = { eol: "LF" }): DeepIndexable {
         const fileContent = readFileSync(filePath);
         return JsonComment.parse(fileContent.toString(), options);
     }

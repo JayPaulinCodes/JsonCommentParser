@@ -1,11 +1,15 @@
 {
   "name": "@devjacob/jcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple function to parse JSON files which contain comments",
   "author": "Jacob Paulin",
   "license": "MPL-2.0",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JayPaulinCodes/JsonCommentParser.git"
+  },
   "scripts": {
     "build": "tsc -b",
     "prepublish:npm": "npm run build",

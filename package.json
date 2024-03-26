@@ -1,6 +1,6 @@
 {
   "name": "@devjacob/jcp",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A simple function to parse JSON files which contain comments",
   "author": "Jacob Paulin",
   "license": "MPL-2.0",

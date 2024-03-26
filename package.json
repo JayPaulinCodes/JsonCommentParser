@@ -1,0 +1,21 @@
+{
+  "name": "@devjacob/jcp",
+  "version": "1.0.0",
+  "description": "A simple function to parse JSON files which contain comments",
+  "author": "Jacob Paulin",
+  "license": "MPL-2.0",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "scripts": {
+    "build": "tsc -b",
+    "prepublish:npm": "npm run build",
+    "publish:npm": "npm publish --access=public"
+  },
+  "devDependencies": {
+    "@types/node": "^14.17",
+    "typescript": "^5.4.3"
+  },
+  "engines": {
+    "node": ">=14.17"
+  }
+}

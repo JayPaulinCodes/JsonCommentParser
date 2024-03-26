@@ -7,7 +7,7 @@ export interface ParseOptions {
     eol?: "LF" | "CRLF";
 }
 
-export class JsonComment {
+export class JCP {
     private static readonly REGEX = {
         singleLine: /(\/\/.*(?:$|\n)|\/\*.*\*\/)/g,
         multiLine: {
@@ -27,15 +27,15 @@ export class JsonComment {
         fileLines.forEach(elem => {
             if (inMultiLine) {
                 // If we are in a multiline comment, see if it ends
-                inMultiLine = elem.search(JsonComment.REGEX.multiLine.end) === -1;
-                if (!inMultiLine) fileLinesFiltered.push(elem.replace(JsonComment.REGEX.multiLine.end, ""));
+                inMultiLine = elem.search(JCP.REGEX.multiLine.end) === -1;
+                if (!inMultiLine) fileLinesFiltered.push(elem.replace(JCP.REGEX.multiLine.end, ""));
             } else {
-                if (elem.search(JsonComment.REGEX.singleLine) !== -1) {
+                if (elem.search(JCP.REGEX.singleLine) !== -1) {
                     // Check if we have a single line comment
-                    fileLinesFiltered.push(elem.replace(JsonComment.REGEX.singleLine, ""));
-                } else if (elem.search(JsonComment.REGEX.multiLine.start) !== -1) {
+                    fileLinesFiltered.push(elem.replace(JCP.REGEX.singleLine, ""));
+                } else if (elem.search(JCP.REGEX.multiLine.start) !== -1) {
                     // Check if we are starting a multi line comment
-                    fileLinesFiltered.push(elem.replace(JsonComment.REGEX.multiLine.start, ""));
+                    fileLinesFiltered.push(elem.replace(JCP.REGEX.multiLine.start, ""));
                     inMultiLine = true;
                 } else {
                     // If the line doesn't have any comments
@@ -52,9 +52,9 @@ export class JsonComment {
 
     public static parsefromFile<T>(filePath: string, options: ParseOptions = { eol: "LF" }): T {
         const fileContent = readFileSync(filePath);
-        return JsonComment.parse<T>(fileContent.toString(), options);
+        return JCP.parse<T>(fileContent.toString(), options);
     }
 }
 
-export const parse = JsonComment.parse;
-export const parsefromFile = JsonComment.parsefromFile;
+export const parse = JCP.parse;
+export const parsefromFile = JCP.parsefromFile;
